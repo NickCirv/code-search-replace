@@ -1,0 +1,24 @@
+{
+  "name": "code-search-replace",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Powerful multi-file find and replace with regex, preview, and undo",
+  "bin": {
+    "code-search-replace": "./index.js",
+    "csr": "./index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "developer-tools",
+    "cli",
+    "nodejs",
+    "zero-dependencies",
+    "search",
+    "replace",
+    "refactoring",
+    "regex"
+  ],
+  "license": "MIT"
+}
