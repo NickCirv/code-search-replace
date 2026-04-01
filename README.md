@@ -1,3 +1,5 @@
+![Banner](banner.svg)
+
 # code-search-replace
 
 > Powerful multi-file find and replace with regex, preview, and undo — better than sed for code refactoring.
