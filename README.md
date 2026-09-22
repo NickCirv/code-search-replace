@@ -1,52 +1,56 @@
-<div align="center">
+![Nicholas Ashkar — code-search-replace](assets/nicholas-ashkar/banner.png)
 
 # code-search-replace
 
-**Multi-file find & replace with regex, diff preview, and undo — zero dependencies**
+Searches and replaces matching text across files with previews and local undo data.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?labelColor=0B0A09)](LICENSE)
-[![Zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen?labelColor=0B0A09)](package.json)
-[![Node >=18](https://img.shields.io/badge/node-%3E%3D18-brightgreen?labelColor=0B0A09)](package.json)
 
-</div>
-
-## Install
-
-```bash
-npx github:NickCirv/code-search-replace "pattern" "replacement" "**/*.js"
-```
-
-Or install globally for the `csr` shorthand:
-
-```bash
-npm install -g github:NickCirv/code-search-replace
-```
-
-## Usage
-
-```bash
-csr <pattern> <replacement> [glob]        # search & replace
-csr --find <pattern> [glob]               # search only
-csr --interactive <pattern> <rep> [glob]  # review file-by-file
-csr undo                                  # undo last session
-csr history                               # show replacement history
-```
-
-| Flag | Description |
-|------|-------------|
-| `--regex` | Treat pattern as regex (auto-detected from meta-chars) |
-| `-i`, `--ignore-case` | Case-insensitive matching |
-| `-w`, `--word` | Whole-word matching only |
-| `--dry-run` | Show diff, exit without writing |
-| `-y`, `--yes` | Apply without confirmation prompt |
-| `--interactive` | Review and approve each file individually |
-| `--find` | Search-only mode — print matches with context |
-| `--context N` | Lines of context around matches (default: 2) |
-| `--format json` | Output as JSON for programmatic use |
+<a id="usage"></a>
 
 ## What it does
 
-Recursively scans your working directory (or a glob-targeted subset), shows a colour diff of every proposed change, and asks for confirmation before writing. Originals are backed up to `~/.csr-backups/` before each write so `csr undo` can restore the last session. Regex is auto-detected from the pattern, capture groups (`$1`, `$2`) work in the replacement string, and binary files are skipped automatically.
+- Literal/regex search.
+- Case and word controls.
+- Interactive review.
+- Dry-run diffs.
+- Local history and undo.
 
----
-<sub>Zero dependencies · Node >=18 · MIT · by <a href="https://github.com/NickCirv">NickCirv</a></sub>
+
+<a id="install"></a>
+
+## Quickstart
+
+Prerequisites: Node.js `>=20` and npm. The checkout below pins the source used for this documentation.
+
+```sh
+git clone https://github.com/NickCirv/code-search-replace.git
+cd code-search-replace
+git checkout bd9a537f07bf1a7449f08a222d0b7bd4c9d89770
+node index.js "TODO" "NEXT" "**/*.js" --dry-run
+```
+
+**Expected behavior (illustrative, not captured):** Displays proposed replacements without applying them.
+
+Examples are source-inspected, **not runtime-tested**. See the research record for verification gaps.
+
+## Boundaries and data
+
+Replacement and undo commands write files. Regex and glob handling use the tool's own parsers; preview the exact match set and keep version-control backups.
+
+## Development
+
+The manifest defines `npm test` as:
+
+```sh
+node --test
+```
+
+The captured suite is a smoke check, not end-to-end behavior coverage. Examples include “entry is valid JavaScript”. Tests were not run for this documentation revision.
+
+See [implementation and command reference](docs/REFERENCE.md) for the package scripts and inspected interfaces, and [research record](docs/RESEARCH.md) for the pinned source, document decisions and unresolved checks.
+
+## License and contact
+
+See [LICENSE](LICENSE) for the original terms and attribution. Legal text is unchanged.
+
+[Nicholas Ashkar](https://nicholashkar.com/) · [Discuss a project](https://nicholashkar.com/#oxblood-contact)
